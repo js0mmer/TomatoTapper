@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="tk.jsommer.tomatotapper.MainActivity">
+
+    <TextView
+        android:text="@string/tomatoesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tomatoText"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp" />
+
+    <ImageButton
+        app:srcCompat="@drawable/tomato"
+        android:id="@+id/tomatoButton"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addTomato"
+        android:adjustViewBounds="true"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/tomatoButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tomatoText"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tpsText"
+        android:text="@string/tpsText" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="@string/resetConfirm"
+        android:ems="10"
+        android:id="@+id/resetConfirm"
+        android:layout_below="@+id/tpsText"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="invisible" />
+
+    <Button
+        android:text="@string/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resetButton"
+        android:onClick="resetButtonClicked"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tomatoText"
+        android:layout_toEndOf="@+id/tomatoText"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp" />
+
+    <TextView
+        android:text="@string/shipmentsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/shipmentsText"
+        android:textSize="30sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/gardensText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gardensText"
+        android:textSize="30sp"
+        android:layout_above="@+id/orchardsText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/orchardsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orchardsText"
+        android:textSize="30sp"
+        android:layout_above="@+id/shipmentsText"
+        android:layout_alignLeft="@+id/fingersText"
+        android:layout_alignStart="@+id/fingersText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fingersText"
+        android:text="@string/fingersText"
+        android:textSize="30sp"
+        android:layout_above="@+id/gardensText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/buyOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buyFingerButton"
+        android:layout_alignLeft="@+id/buyFingerButton"
+        android:layout_alignStart="@+id/buyFingerButton"
+        android:id="@+id/buyGardenButton"
+        android:layout_above="@+id/orchardsText"
+        android:onClick="buyGarden" />
+
+    <Button
+        android:text="@string/buyOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buyGardenButton"
+        android:layout_alignRight="@+id/buyGardenButton"
+        android:layout_alignEnd="@+id/buyGardenButton"
+        android:id="@+id/buyOrchardButton"
+        android:layout_above="@+id/shipmentsText"
+        android:onClick="buyOrchard" />
+
+    <Button
+        android:text="@string/buyOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buyOrchardButton"
+        android:layout_alignLeft="@+id/buyOrchardButton"
+        android:layout_alignStart="@+id/buyOrchardButton"
+        android:id="@+id/buyShipmentButton"
+        android:layout_alignParentBottom="true"
+        android:onClick="buyShipment" />
+
+    <Button
+        android:text="@string/buyOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buyFingerButton"
+        android:textSize="14sp"
+        android:layout_above="@+id/gardensText"
+        android:layout_toRightOf="@+id/shipmentsText"
+        android:layout_toEndOf="@+id/shipmentsText"
+        android:layout_alignTop="@+id/fingersText"
+        android:onClick="buyFinger" />
+
+    <TextView
+        android:text="@string/shipmentsPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/shipmentsPrice"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/buyShipmentButton"
+        android:layout_alignBottom="@+id/buyShipmentButton"
+        android:layout_alignLeft="@+id/fingersPrice"
+        android:layout_alignStart="@+id/fingersPrice" />
+
+    <TextView
+        android:text="@string/orchardsPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orchardsPrice"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/buyOrchardButton"
+        android:layout_alignBottom="@+id/buyOrchardButton"
+        android:layout_alignLeft="@+id/shipmentsPrice"
+        android:layout_alignStart="@+id/shipmentsPrice" />
+
+    <TextView
+        android:text="@string/gardensPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gardensPrice"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/buyGardenButton"
+        android:layout_alignBottom="@+id/buyGardenButton"
+        android:layout_alignLeft="@+id/fingersPrice"
+        android:layout_alignStart="@+id/fingersPrice" />
+
+    <TextView
+        android:text="@string/fingersPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fingersPrice"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/buyFingerButton"
+        android:layout_alignBottom="@+id/buyFingerButton"
+        android:layout_toRightOf="@+id/tomatoText"
+        android:layout_toEndOf="@+id/tomatoText" />
+
+</RelativeLayout>
