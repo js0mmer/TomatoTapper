@@ -34,7 +34,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:contentDescription="@string/tomatoButton" />
+        android:contentDescription="@string/tomatoButton"
+        android:cropToPadding="false" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -190,12 +191,12 @@
     <TextView
         android:text="@string/fingersPrice"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/fingersPrice"
         android:textSize="18sp"
         android:layout_alignBaseline="@+id/buyFingerButton"
         android:layout_alignBottom="@+id/buyFingerButton"
         android:layout_toRightOf="@+id/tomatoText"
-        android:layout_toEndOf="@+id/tomatoText" />
+        android:layout_toEndOf="@+id/tomatoText"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

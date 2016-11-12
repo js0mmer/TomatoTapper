@@ -1,9 +1,13 @@
 package tk.jsommer.tomatotapper;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,11 +40,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loadData(getApplicationContext());
-        updateFingers();
-        updateGardens();
-        updateOrchards();
-        updateShipments();
-        updateTps();
 
         handler = new Handler();
         startRepeatingTask();
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 saveData(getApplicationContext());
                 editText.setText(getString(R.string.resetConfirm));
 
-                Toast.makeText(getApplicationContext(), "Game Reset", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.gameReset), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -113,17 +112,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buyFinger(View view) {
-        if(tomatoes < fingers * 10) {
+        int price = fingers == 0 ? 10 : fingers * 10;
+
+        if(tomatoes < price) {
             Toast.makeText(getApplicationContext(), getString(R.string.notEnough), Toast.LENGTH_SHORT).show();
+            Button button = (Button) findViewById(R.id.buyFingerButton);
+            button.setEnabled(false);
             return;
         }
 
-        tomatoes -= fingers * 10;
+        tomatoes -= price;
         fingers++;
         updateTomatoes();
         updateTps();
         updateFingers();
-        Toast.makeText(getApplicationContext(), "1 " + getString(R.string.fingers).substring(0, getString(R.string.fingers).length() - 1) + " " + getString(R.string.bought), Toast.LENGTH_SHORT).show();
     }
 
     private void updateFingers() {
@@ -140,6 +142,9 @@ public class MainActivity extends AppCompatActivity {
             button.setEnabled(false);
 
             price.setVisibility(View.INVISIBLE);
+        } else if(fingers == 0) {
+            price.setText(String.valueOf(10));
+            return;
         }
 
         text.setText(fingers + " " + str);
@@ -147,17 +152,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buyGarden(View view) {
-        if(tomatoes < gardens * 100) {
+        int price = gardens == 0 ? 100 : gardens * 100;
+
+        if(tomatoes < price) {
             Toast.makeText(getApplicationContext(), getString(R.string.notEnough), Toast.LENGTH_SHORT).show();
+            Button button = (Button) findViewById(R.id.buyGardenButton);
+            button.setEnabled(false);
             return;
         }
 
-        tomatoes -= gardens * 100;
+        tomatoes -= price;
         gardens++;
         updateTomatoes();
         updateTps();
         updateGardens();
-        Toast.makeText(getApplicationContext(), "1 " + getString(R.string.gardens).substring(0, getString(R.string.gardens).length() - 1) + " " + getString(R.string.bought), Toast.LENGTH_SHORT).show();
     }
 
     private void updateGardens() {
@@ -174,6 +182,9 @@ public class MainActivity extends AppCompatActivity {
             button.setEnabled(false);
 
             price.setVisibility(View.INVISIBLE);
+        } else if(gardens == 0) {
+            price.setText(String.valueOf(100));
+            return;
         }
 
         text.setText(gardens + " " + str);
@@ -181,17 +192,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buyOrchard(View view) {
-        if(tomatoes < orchards * 1000) {
+        int price = orchards == 0 ? 1000 : orchards * 1000;
+
+        if(tomatoes < price) {
             Toast.makeText(getApplicationContext(), getString(R.string.notEnough), Toast.LENGTH_SHORT).show();
+            Button button = (Button) findViewById(R.id.buyOrchardButton);
+            button.setEnabled(false);
             return;
         }
 
-        tomatoes -= orchards * 1000;
+        tomatoes -= price;
         orchards++;
         updateTomatoes();
         updateTps();
         updateOrchards();
-        Toast.makeText(getApplicationContext(), "1 " + getString(R.string.orchards).substring(0, getString(R.string.orchards).length() - 1) + " " + getString(R.string.bought), Toast.LENGTH_SHORT).show();
     }
 
     private void updateOrchards() {
@@ -208,6 +222,9 @@ public class MainActivity extends AppCompatActivity {
             button.setEnabled(false);
 
             price.setVisibility(View.INVISIBLE);
+        } else if(orchards == 0) {
+            price.setText(String.valueOf(1000));
+            return;
         }
 
         text.setText(orchards + " " + str);
@@ -215,17 +232,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buyShipment(View view) {
-        if(tomatoes < shipments * 10000) {
+        int price = shipments == 0 ? 10000 : shipments * 10000;
+
+        if(tomatoes < price) {
             Toast.makeText(getApplicationContext(), getString(R.string.notEnough), Toast.LENGTH_SHORT).show();
+            Button button = (Button) findViewById(R.id.buyShipmentButton);
+            button.setEnabled(false);
             return;
         }
 
-        tomatoes -= shipments * 10000;
+        tomatoes -= price;
         shipments++;
         updateTomatoes();
         updateTps();
         updateShipments();
-        Toast.makeText(getApplicationContext(), "1 " + getString(R.string.shipments).substring(0, getString(R.string.shipments).length() - 1) + " " + getString(R.string.bought), Toast.LENGTH_SHORT).show();
     }
 
     private void updateShipments() {
@@ -242,10 +262,37 @@ public class MainActivity extends AppCompatActivity {
             button.setEnabled(false);
 
             price.setVisibility(View.INVISIBLE);
+        } else if(shipments == 0) {
+            price.setText(String.valueOf(10000));
+            return;
         }
 
         text.setText(shipments + " " + str);
         price.setText(String.valueOf(shipments * 10000));
+    }
+
+    private void updateButtons() {
+        Button finger = (Button) findViewById(R.id.buyFingerButton);
+        Button garden = (Button) findViewById(R.id.buyGardenButton);
+        Button orchard = (Button) findViewById(R.id.buyOrchardButton);
+        Button shipment = (Button) findViewById(R.id.buyShipmentButton);
+
+        if(!finger.isEnabled()) {
+            finger.setEnabled(tomatoes >= fingers * 10 || fingers == 0);
+        }
+
+        if(!garden.isEnabled()) {
+            garden.setEnabled(tomatoes >= gardens * 100 || gardens == 0);
+        }
+
+        if(!orchard.isEnabled()) {
+            orchard.setEnabled(tomatoes >= orchards * 1000 || orchards == 0);
+        }
+
+        if(!shipment.isEnabled()) {
+            shipment.setEnabled(tomatoes >= shipments * 10000 || shipments == 0);
+        }
+
     }
 
     @Override
@@ -260,6 +307,8 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 addTomatoes(getTps());
+
+                updateButtons();
 
                 if(track >= 20) {
                     saveData(getApplicationContext());
@@ -316,6 +365,11 @@ public class MainActivity extends AppCompatActivity {
         gardens = data[2];
         orchards = data[3];
         shipments = data[4];
+        updateFingers();
+        updateGardens();
+        updateOrchards();
+        updateShipments();
+        updateTps();
     }
 
     private void saveData(Context context) {
