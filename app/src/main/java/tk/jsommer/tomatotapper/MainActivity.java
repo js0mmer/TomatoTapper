@@ -356,8 +356,6 @@ public class MainActivity extends AppCompatActivity {
             Log.e("load data", "File not found: " + e.toString());
         } catch(IOException e) {
             Log.e("load data", "Can not read file: " + e.toString());
-        } catch(NumberFormatException e) {
-            Log.e("load data", "Number format: " + e.toString());
         }
 
         tomatoes = data[0];
