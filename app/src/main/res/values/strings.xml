@@ -13,10 +13,6 @@
     <string name="shipmentsText">0 Shipments</string>
     <string name="buyOne">Buy 1</string>
     <string name="notEnough">Insufficient Funds</string>
-    <string name="fingersPrice">10</string>
-    <string name="gardensPrice">100</string>
-    <string name="orchardsPrice">1000</string>
-    <string name="shipmentsPrice">10000</string>
     <string name="fingers">Fingers</string>
     <string name="gardens">Gardens</string>
     <string name="orchards">Orchards</string>

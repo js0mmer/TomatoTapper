@@ -37,23 +37,15 @@
         android:contentDescription="@string/tomatoButton"
         android:cropToPadding="false" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tomatoText"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/tpsText"
-        android:text="@string/tpsText" />
-
     <EditText
+        android:id="@+id/resetConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:text="@string/resetConfirm"
-        android:ems="10"
-        android:id="@+id/resetConfirm"
         android:layout_below="@+id/tpsText"
         android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/resetConfirm"
+        android:inputType="text"
         android:textAlignment="center"
         android:textSize="18sp"
         android:visibility="invisible" />
@@ -156,7 +148,7 @@
         android:onClick="buyFinger" />
 
     <TextView
-        android:text="@string/shipmentsPrice"
+        android:text="10000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/shipmentsPrice"
@@ -167,7 +159,7 @@
         android:layout_alignStart="@+id/fingersPrice" />
 
     <TextView
-        android:text="@string/orchardsPrice"
+        android:text="1000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/orchardsPrice"
@@ -178,7 +170,7 @@
         android:layout_alignStart="@+id/shipmentsPrice" />
 
     <TextView
-        android:text="@string/gardensPrice"
+        android:text="100"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/gardensPrice"
@@ -189,7 +181,7 @@
         android:layout_alignStart="@+id/fingersPrice" />
 
     <TextView
-        android:text="@string/fingersPrice"
+        android:text="10"
         android:layout_width="wrap_content"
         android:id="@+id/fingersPrice"
         android:textSize="18sp"
@@ -198,5 +190,13 @@
         android:layout_toRightOf="@+id/tomatoText"
         android:layout_toEndOf="@+id/tomatoText"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tpsText"
+        android:text="@string/tpsText"
+        android:layout_below="@+id/tomatoText"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

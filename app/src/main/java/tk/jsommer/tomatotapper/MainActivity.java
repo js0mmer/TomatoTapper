@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 updateShipments();
 
                 saveData(getApplicationContext());
-                editText.setText(getString(R.string.resetConfirm));
 
                 Toast.makeText(getApplicationContext(), getString(R.string.gameReset), Toast.LENGTH_SHORT).show();
             }
